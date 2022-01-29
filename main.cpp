@@ -1,10 +1,10 @@
-#include "cristalizadora.h"
+#include "sugar_crystallizer.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
-  Cristalizadora w;
+  SugarCrystallizer w;
   w.show();
 
   return a.exec();

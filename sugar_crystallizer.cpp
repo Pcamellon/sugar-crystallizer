@@ -1,10 +1,10 @@
-#include "cristalizadora.h"
-#include "ui_cristalizadora.h"
+#include "sugar_crystallizer.h"
+#include "ui_sugar_crystallizer.h"
 #include <QTimer>
 
-Cristalizadora::Cristalizadora(QWidget *parent) :
+SugarCrystallizer::SugarCrystallizer(QWidget *parent) :
   QMainWindow(parent),
-  ui(new Ui::Cristalizadora)
+  ui(new Ui::SugarCrystallizer)
 {
   ui->setupUi(this);
 
@@ -24,9 +24,9 @@ Cristalizadora::Cristalizadora(QWidget *parent) :
   ui->lineEdit->setMaxLength(30);
 }
 
-Cristalizadora::~Cristalizadora(){  delete ui; }
+SugarCrystallizer::~SugarCrystallizer(){  delete ui; }
 
-void Cristalizadora::on_dial_principal_valueChanged(int dial_vp_value){
+void SugarCrystallizer::on_dial_principal_valueChanged(int dial_vp_value){
   int v1 = ui->dial_tachoI->value();
   int v2 = ui->dial_tachoII->value();
   
@@ -41,7 +41,7 @@ void Cristalizadora::on_dial_principal_valueChanged(int dial_vp_value){
 }
 
 // If all "tachos" are working fine
-void Cristalizadora::on_radioButton_todosOK_clicked(){
+void SugarCrystallizer::on_radioButton_todosOK_clicked(){
   ui->groupBox->setDisabled(false);
   ui->groupBox_2->setDisabled(false);
   ui->dial_main_valv->setDisabled(false);
@@ -50,7 +50,7 @@ void Cristalizadora::on_radioButton_todosOK_clicked(){
 }
 
 // If "tacho I" is not working
-void Cristalizadora::on_radioButton_I_roto_clicked(){
+void SugarCrystallizer::on_radioButton_I_roto_clicked(){
   ui->groupBox_tacho_I->setDisabled(true);
   ui->groupBox_tacho_II->setDisabled(false);
   ui->dial_main_valv->setDisabled(false);
@@ -59,7 +59,7 @@ void Cristalizadora::on_radioButton_I_roto_clicked(){
 }
 
 // If "tacho II" is not working
-void Cristalizadora::on_radioButton_II_roto_clicked(){
+void SugarCrystallizer::on_radioButton_II_roto_clicked(){
   ui->groupBox_tacho_I->setDisabled(false);
   ui->groupBox_tacho_II->setDisabled(true);
   ui->dial_main_valv->setDisabled(false);
@@ -68,7 +68,7 @@ void Cristalizadora::on_radioButton_II_roto_clicked(){
 }
 
 // If all "tachos" are not working
-void Cristalizadora::on_radioButton_todosRotos_clicked(){
+void SugarCrystallizer::on_radioButton_todosRotos_clicked(){
   ui->groupBox_tacho_I->setDisabled(true);
   ui->groupBox_tacho_II->setDisabled(true);
   ui->dial_main_valv->setDisabled(true);
@@ -76,7 +76,7 @@ void Cristalizadora::on_radioButton_todosRotos_clicked(){
   ui->comboBox_select_tacho->setDisabled(true);
 }
 
-void Cristalizadora::on_comboBox_currentIndexChanged(int index){
+void SugarCrystallizer::on_comboBox_currentIndexChanged(int index){
   switch (index) {
     case 0:
       ui->lcdNumber->display(0);
@@ -100,17 +100,17 @@ void Cristalizadora::on_comboBox_currentIndexChanged(int index){
 * Tacho I
 */
 
-void Cristalizadora::on_verticalSlider_valueChanged(){
+void SugarCrystallizer::on_verticalSlider_valueChanged(){
   ui->dial_tachoI->setValue(99);
 }
 
-void Cristalizadora::on_spinBox_tachoI_valueChanged(int spinB_value){
+void SugarCrystallizer::on_spinBox_tachoI_valueChanged(int spinB_value){
   if(ui->comboBox->currentIndex() == 1){
     ui->lcdNumber->display(spinB_value * 2); // to L/s
   }
 }
 
-void Cristalizadora::on_dial_tachoI_valueChanged(int dialValue){
+void SugarCrystallizer::on_dial_tachoI_valueChanged(int dialValue){
 //  qint8 v2 = ui->spinBox_princp->value() - value;
 //  ui->spinBox_tachoII->setValue(v2);
 
@@ -121,7 +121,7 @@ void Cristalizadora::on_dial_tachoI_valueChanged(int dialValue){
 }
 
 // Liquid level on "Tacho I"
-void Cristalizadora::on_progressBar_valueChanged(int value){
+void SugarCrystallizer::on_progressBar_valueChanged(int value){
   if(value == 100){
     ui->verticalSlider->setValue(0);
   }
@@ -131,7 +131,7 @@ void Cristalizadora::on_progressBar_valueChanged(int value){
 *  Logging
 */
 
-void Cristalizadora::on_spinBox_tachoI_valueChanged(const QString &arg1){
+void SugarCrystallizer::on_spinBox_tachoI_valueChanged(const QString &arg1){
   QString str = ui->lineEdit->text();
 
   // si str es mas largo que el max de caracteres que

@@ -3,16 +3,16 @@
 #include <QMainWindow>
 
 namespace Ui {
-  class Cristalizadora;
+  class SugarCrystallizer;
 }
 
-class Cristalizadora : public QMainWindow
+class SugarCrystallizer : public QMainWindow
 {
   Q_OBJECT
 
 public:
-  explicit Cristalizadora(QWidget *parent = nullptr);
-  ~Cristalizadora();
+  explicit SugarCrystallizer(QWidget *parent = nullptr);
+  ~SugarCrystallizer();
 
 private slots:
   /// QRadioButtons
@@ -37,7 +37,7 @@ private slots:
   void on_progressBar_valueChanged(int value);
 
 private:
-  Ui::Cristalizadora *ui;
+  Ui::SugarCrystallizer *ui;
 };
 
 #endif // CRISTALIZADORA_H

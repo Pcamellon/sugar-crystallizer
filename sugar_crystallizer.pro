@@ -25,10 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        cristalizadora.cpp
+        sugar_crystallizer.cpp
 
 HEADERS += \
-        cristalizadora.h
+        sugar_crystallizer.h
 
 FORMS += \
-        cristalizadora.ui
+        sugar_crystallizer.ui
